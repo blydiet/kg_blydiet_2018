@@ -3,20 +3,17 @@ const prompt = require('prompt')
 prompt.start()
 
 
-const hashValue = (str, hash) => {
-    let count = 0
-    for (let i = 0; i < str.length; i++){
-        if (hash[str[i]] === undefined){
-            count = 0
-            hash[str[i]] = ++count
-        } else {
-            ++hash[str[i]]
-        }
-    }
-    return hash
-}
+prompt.get(['str1', 'str2'], (err, result) => {
+    if (err) return onError(err)
+    let firstStr = result.str1
+    let secondStr = result.str2
+    mapString(firstStr, secondStr)
+    
+})
 
-const mapString = (firstStr, secondStr) => {
+
+
+function mapString (firstStr, secondStr) {
     if (firstStr.length !== secondStr.length){
         console.log('false')
         return false
@@ -28,8 +25,6 @@ const mapString = (firstStr, secondStr) => {
     let totalMapVal = 0
 
     while ( strPtr1< arrayStr1.length && strPtr2 < arrayStr2.length){
-        console.log('array1',arrayStr1[strPtr1])
-        console.log('array2', arrayStr2[strPtr2])
         if (arrayStr1[strPtr1] > arrayStr2[strPtr2]){
             console.log('false')
             return false
@@ -47,16 +42,25 @@ const mapString = (firstStr, secondStr) => {
     console.log('true')
     return true
 }
-prompt.get(['str1', 'str2'], (err, result) => {
-    if (err) return onError(err)
-    let firstStr = result.str1
-    let secondStr = result.str2
-    mapString(firstStr, secondStr)
-    
-})
+
+function hashValue (str, hash) {
+    let count = 0
+    for (let i = 0; i < str.length; i++){
+        if (hash[str[i]] === undefined){
+            count = 0
+            hash[str[i]] = ++count
+        } else {
+            ++hash[str[i]]
+        }
+    }
+    return hash
+}
+
 
 const onError = (err)=> {
     console.log(err)
     return 1
 }
 
+
+  
