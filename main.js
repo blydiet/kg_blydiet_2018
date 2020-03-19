@@ -24,7 +24,7 @@ function mapString (firstStr, secondStr) {
     let strPtr2 = 0
     let totalMapVal = 0
 
-    while ( strPtr1< arrayStr1.length && strPtr2 < arrayStr2.length){
+    while (strPtr1< arrayStr1.length && strPtr2 < arrayStr2.length){
         if (arrayStr1[strPtr1] > arrayStr2[strPtr2]){
             console.log('false')
             return false

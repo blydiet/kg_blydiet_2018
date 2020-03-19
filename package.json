@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "brfs": "^2.0.2",
+    "chai": "^4.2.0",
     "prompt": "^1.0.0",
     "testem": "^3.0.3"
   }
