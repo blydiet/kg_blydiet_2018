@@ -18,8 +18,10 @@ function mapString (firstStr, secondStr) {
         console.log('false')
         return false
     }
-    let arrayStr1 = Object.values(hashValue(firstStr, {})).sort((a,b) => a - b)
-    let arrayStr2 = Object.values(hashValue(secondStr, {})).sort((a,b) => a - b)
+    let arrayStr1 = new Map
+    let arrayStr2 = new Map
+    hashValue(firstStr, arrayStr1)
+    hashValue(secondStr, arrayStr2)
     let strPtr1 = 0
     let strPtr2 = 0
     let totalMapVal = 0
@@ -46,11 +48,12 @@ function mapString (firstStr, secondStr) {
 function hashValue (str, hash) {
     let count = 0
     for (let i = 0; i < str.length; i++){
-        if (hash[str[i]] === undefined){
+        if (hash.get(str[i]) === undefined){
             count = 0
-            hash[str[i]] = ++count
+            hash.set(str[i], count) = ++count
         } else {
-            ++hash[str[i]]
+            ++count 
+            hash.set(str[i], count)
         }
     }
     return hash
